@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best jokes</title>
+
+    <style>
+        #container{
+            background-color: aqua;
+            place-items: center;
+            text-align: center;
+            border-radius: 10ch;
+            border-style: solid;
+            border-color: rgb(114, 2, 252);
+            margin: auto;
+            margin-top: 200px;
+            width: fit-content;
+        }
+        .joke{
+            background-color: bisque;
+            place-items: center;
+            border-radius: 10ch;
+            text-align: center;
+            margin-top: 3ch;
+            font-style: italic;
+            
+        }
+        #jokebtn{
+
+            background-color: blueviolet;
+            place-items: center;
+            margin-top: 3ch;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="container" style="color: rgb(5, 42, 38);">
+      <h3>Best jokes to make your day</h3>
+      <div id="joke" class="joke">Wait Joke is loadig..</div>
+      <button id="jokebtn" class="btn">Next Joke</button>
+    </div>
+
+    <script>
+
+        // API fetchting through PROMIE 
+
+
+        // const joke = document.getElementById("joke");
+        // const jokeBtn = document.getElementById("jokebtn");
+
+
+        // const getJokes = () => {
+        //    const setHeader = {
+        //     headers : {
+
+        //         Accept : "application/json"
+        //     } 
+        //    }
+
+        //    fetch('https://icanhazdadjoke.com/', setHeader)
+        //     .then((response) => response.json() )
+        //     .then((data) => {
+        //         joke.innerHTML = data.joke;
+        //     }).catch((error) => {
+        //         console.log(error);
+        //     })
+        //  }
+
+
+        // API fetching through Async Await
+
+        const joke = document.getElementById("joke");
+        const jokeBtn = document.getElementById("jokebtn");
+
+
+        const getJokes = async () => {
+
+            try{
+
+                const setHeader = {
+            headers : {
+                Accept : "application/json"
+            } 
+           }
+
+            const res = await fetch('https://icanhazdadjoke.com/', setHeader);
+            const data = await res.json();
+             joke.innerHTML = data.joke;
+            }catch(err){
+                console.log(err);
+            }
+          
+           
+
+            
+         }
+        
+
+        jokeBtn.addEventListener("click",getJokes);
+        getJokes();
+    </script>
+</body>
+</html>
